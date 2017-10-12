@@ -11,3 +11,4 @@ rdiscount:
  extensions: [smart]
 permalink: /articles/:title
 paginate: 3
+plugins: [jekyll-paginate]
