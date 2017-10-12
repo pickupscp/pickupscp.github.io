@@ -6,7 +6,7 @@ baseurl: "/"
 url: "http://localhost:4000"
 
 # Build settings
-markdown: rdiscount
+markdown:  kramdown
 rdiscount:
  extensions: [smart]
 permalink: /articles/:title
