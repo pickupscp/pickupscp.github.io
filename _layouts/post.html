@@ -22,16 +22,14 @@ layout: default
     </div>
    <div class="four columns">
       
-      <h4>Related Writings</h4>
-      <p>From the archives of this journal:</p>
+      <h4>Post recenti</h4>
+      <p>Dai nostri archivi:</p>
       <ul class="disc">
       {% for post in site.related_posts limit: 10 %}        
         <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
       </ul>
 
-      <h4>About Edward Hyde</h4>
-      <p>A night owl, citizen of London, of questionable character.</p>
 
     </div>
   </div>
