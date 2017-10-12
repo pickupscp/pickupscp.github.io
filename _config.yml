@@ -1,7 +1,7 @@
 # Site settings
 title: "Pickup"
 email: supporto@scponline.it
-description: "Esempi di utilizzo per il MES di Esolver - Sistemi"
+description: "Esempi di utilizzo del Manufacturing execution system (MES) di Esolver - Sistemi"
 baseurl: "/"
 url: "https://pickupscp.github.io"
 
