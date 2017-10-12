@@ -3,7 +3,7 @@ title: "Pickup"
 email: supporto@scponline.it
 description: "Esempi di utilizzo per il MES di Esolver - Sistemi"
 baseurl: "/"
-url: "http://localhost:4000"
+url: "https://pickupscp.github.io/"
 
 # Build settings
 markdown:  kramdown
