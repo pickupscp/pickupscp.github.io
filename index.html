@@ -1,64 +1,49 @@
 ---
 layout: default
-title: Home
-cover: false
-about: 'about.html'
 ---
 
-<header class="main-header {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
-    <nav class="main-nav overlay clearfix">
-            {% if page.logo %}
-                <a class="blog-logo" href="{{ site.baseurl }}">
-                    <img src="{{ page.logo }}" alt="Blog Logo" />
-                </a>
-            {% endif %}
-        <a class="subscribe-button icon-feed" href="{{ site.baseurl }}feed.xml">Subscribe</a>
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">{{ site.name }}</h1>
-            <h2 class="page-description">
-                {% if site.description %} {{ site.description }}. {% endif %}
-                {% if page.about %} <a href='{{ site.baseurl }}{{ page.about }}'> About me </a> {% endif %}
-            </h2>
+  <div class="row">
+    <div class="eight columns">
+      {% for post in paginator.posts limit: 3 %}
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+
+      <div class="row">
+        <div class="twelve columns">
+          {{ post.content }}
         </div>
+      </div>
+      {% endfor %}
+
+      <div class="pagination">
+      <p>
+        {% if paginator.previous_page %}
+          {% if paginator.previous_page == 1 %}
+            <a href="/" class="previous">Previous</a>
+          {% else %}
+            <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}" class="previous">Previous</a>
+          {% endif %}
+        {% else %}
+          <span class="previous">Previous</span>
+        {% endif %}
+        <span class="page_number">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+          <a href="{{ site.baseurl }}/page{{ paginator.next_page }}" class="next">Next</a>
+        {% else %}
+          <span class="next">Next</span>
+        {% endif %}
+      </p>
     </div>
-    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
-</header>
-
-
-<main id="content" class="content" role="main">
-
-
-    <div class="extra-pagination inner">
-        {% include pagination.html %}
     </div>
-
-    {% for post in paginator.posts %}
-
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        </header>
-        <section class="post-excerpt">
-            {{ post.excerpt }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
-        </section>
-        <footer class="post-meta">
-            {% if site.author %}
-                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
-                {{ site.author }}
-            {% endif %}
-            {% if post.categories.size > 0 %} 
-                {{ post.categories | array_to_sentence_string | prepend: 'on ' }} 
-            {% endif %}
-            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
-                {{ post.date | date_to_string }}
-            </time> 
-        </footer>
-    </article>
-
-    {% endfor %}
-
-    {% include pagination.html %}
-
-</main>
+    <div class="four columns">
+      <h4>Recent Writings</h4>
+      <p>From the archives of this journal:</p>
+      <ul class="disc">
+      {% for post in site.posts offset: 3 limit: 10 %}
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+      </ul>
+      <h4>About Edward Hyde</h4>
+      <p>A night owl, citizen of London, of questionable character.</p>
+      <p><a href="/feed.xml">Subscribe to Feed</a></p>
+    </div>
+  </div>
